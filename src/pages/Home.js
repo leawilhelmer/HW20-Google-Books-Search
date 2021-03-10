@@ -4,7 +4,7 @@ import Nav from "../components/Nav/nav";
 import Jumbotron from "../components/Jumbotron/jumbo";
 import {Input, SubmitBtn} from "../components/Search/search";
 import API from "../utils/API";
-import ResultList from "../components//SearchResults/searchResults";
+import ResultList from "../components/SearchResults/searchResults";
 
 class Home extends Component {
 

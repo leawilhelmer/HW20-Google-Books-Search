@@ -1,7 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
-import React from "react";
-import Nav from "../src/components/Nav/nav"
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from "./pages/Home";
+import Saved from "./pages/Saved";
+import "./App.css";
 
 function App() {
   return (

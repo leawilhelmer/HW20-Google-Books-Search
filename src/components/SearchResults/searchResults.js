@@ -1,23 +1,38 @@
-import React from "react";
+  import React, { Component } from 'react';
+  import { Container, Row, Col } from "../Grid/grid"
 
-
-export function Container({ fluid, children }) {
-  return <div className={`container${fluid ? "-fluid" : ""}`}>{children}</div>;
-}
-
-export function Row({ fluid, children }) {
-  return <div className={`row${fluid ? "-fluid" : ""}`}>{children}</div>;
-}
-
-export function Col({ size, children }) {
-  return (
-    <div
-      className={size
-        .split(" ")
-        .map(size => "col-" + size)
-        .join(" ")}
-    >
-      {children}
-    </div>
-  );
-}
+const SearchResult = props => {
+    return (
+      <Container>
+        <h3>Search Results</h3>
+        {props.books.map(book => {
+          return (
+            <div className="card mb-5">
+              <div className="card-body">
+                <Row className="SearchResult row" id={book.title + "Card"} key={book._id}>
+                  <Col size="2">
+                    <img src={book.image} alt={book.title} />
+                  </Col>
+                  <Col size="10" className="pl-2">
+                    <h3 className="bookTitle">{book.title}</h3>
+                    <h4 className="bookAuthor">{book.authors}</h4>
+                    <p className="bookDescription pr-3">{book.description}</p>
+                  </Col>
+                </Row>
+                <Row>
+                  <button className="save btn mt-4 ml-3 mr-1" id={book.id} onClick={(event) => props.handleSavedButton(event)}>
+                    Save Book</button>             
+                  <a href={book.link} target="_blank" rel="noopener noreferrer">
+                    <button className="view btn mt-4">
+                      View Book</button>                 
+                  </a>
+                </Row>
+              </div>
+            </div>
+  
+          );
+        })}
+      </Container>
+    )
+  }
+  export default SearchResult;
