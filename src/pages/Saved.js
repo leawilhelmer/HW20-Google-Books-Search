@@ -1,64 +1,40 @@
-import React, { Component } from 'react'
-import { Container } from "../components/Grid/grid";
-import Nav from "../components/Nav/nav";
+import React, { Component } from "react";
+import API from "../utils/API";
 import Jumbotron from "../components/Jumbotron/jumbo";
-import API from '../utils/API';
-import SavedList from "../components/SavedItem/savedItem";
+import { Container} from "../components/Grid/grid";
+import SavedResult from "../components/SavedResult/SavedResult"
 
-class Saved extends Component {
-
+class SaveBook extends Component {
     state = {
         savedBooks: []
-    }
+    };
 
-    componentDidMount = () => {
-        this.getBooks()
-    }
-
-    deleteGoogleBook = currentBook => {
-        API.deleteBook( currentBook.id )
-        .then(res => {
-            console.log("You deleted this book:", res);
-            this.getBooks();
-        })
-        .catch(err => {
-            console.log("This is the error", err);
-        })
-    }
-
-    getBooks = () => {
+    //when this component mounts, grab all books that were save to the database 
+    componentDidMount() {
         API.getBooks()
-        .then(res => {
-            this.setState({
-                savedBooks: res.data
-            })
-            console.log("This is the res from getBooks", res);
-        })
-        .catch(err => {
-            console.log("This is the error", err);
-        })
+            .then(res => this.setState({ savedBooks: res.data }))
+            .catch(err => console.log(err))
     }
 
+    //function to remove book by id
+    handleDeleteButton = id => {
+        API.deleteBook(id)
+            .then(res => this.componentDidMount())
+            .catch(err => console.log(err))
+    }
 
     render() {
         return (
-            <div>
-                <Nav />
-                <Container fluid>
+            <Container fluid className="container">
                 <Jumbotron />
-                {this.state.savedBooks.length ? (
-                    <SavedList 
-                    bookState={this.state.savedBooks}
-                    deleteGoogleBook={this.deleteGoogleBook}
-                    >
-                    </SavedList>
-                ) : (
-                    <h5>No results to display</h5>
-                )}
+                <Container>
+                    <SavedResult savedBooks={this.state.savedBooks} handleDeleteButton={this.handleDeleteButton} />
                 </Container>
-            </div>
+            </Container>
         )
     }
 }
 
-export default Saved
+
+
+export default SaveBook 
