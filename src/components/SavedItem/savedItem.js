@@ -1,6 +1,5 @@
 import React from "react";
-import "./style.css"
-import {Row, Col} from "../Grid"
+import {Row, Col} from "../Grid/grid"
 
 const SavedResult = props => {
     return (props.savedBooks.length === 0) ? (
