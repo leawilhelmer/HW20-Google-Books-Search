@@ -1,0 +1,11 @@
+
+.jumbotron{
+    background-image: url("https://i.pinimg.com/564x/67/18/22/671822c2f63dd5f65d8fd15c9710420b.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    padding-top: 10; 
+    text-align: center;
+    color: white;
+}
