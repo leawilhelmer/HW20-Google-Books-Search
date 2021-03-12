@@ -1,9 +1,10 @@
 
 .jumbotron{
-    background-image: url("https://i.pinimg.com/564x/67/18/22/671822c2f63dd5f65d8fd15c9710420b.jpg");
+    background-image: url(../Jumbotron/library-wallpaper-50371-52062-hd-wallpapers.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    height: 300px; 
     width: 100%;
     padding-top: 10; 
     text-align: center;
